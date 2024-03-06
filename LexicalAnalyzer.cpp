@@ -275,13 +275,15 @@ bool isIdentifier(const std::string &str)
         switch (state)
         {
         case 0:
+            // The first character must be a lowercase letter to proceed to state 1.
             if (islower(ch))
                 state = 1;
             else
                 return false;
             break;
         case 1:
-            if (islower(ch))
+            // Once in state 1, the identifier can contain any combination of lowercase letters and digits.
+            if (islower(ch) || isdigit(ch))
                 state = 1;
             else
                 return false;
@@ -291,6 +293,7 @@ bool isIdentifier(const std::string &str)
         }
     }
 
+    // The string is accepted as a valid identifier if the DFA is in state 1 after processing all characters.
     return state == 1;
 }
 
