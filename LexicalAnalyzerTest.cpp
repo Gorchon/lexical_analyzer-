@@ -57,6 +57,13 @@ public:
     }
 
     // Analyzes the input file to tokenize the content
+    // We read the input file character by character , when the lexer encounters a character that could potentially form a token 
+    // we use conditional statements to determine which DFA to apply, once the lexer determines the appropieate DFA to use it calls
+    // the corresponding function and the function uses a transition table thorugh a 2d array (matrix) to process the string. Finally 
+    // after a function processes its input using the DFA it returns a boolean value indicating a valid token, after the type its determined 
+    // we just add the token with its type. 
+
+    
     void analyze(const std::string &filepath)
     {
         std::ifstream file(filepath);
@@ -243,17 +250,18 @@ bool isNumber(const std::string &str)
     int transitionTable[4][3] = {
         {1, -1, -1},  // State 0: digit -> State 1, else invalid (-1)
         {1,  2, -1},  // State 1: digit -> State 1, '.' -> State 2, else invalid
-        {-1, -1, -1}, // State 2: (placeholder, will be overwritten)
+        {3, -1, -1}, // State 2: (placeholder, will be overwritten)
         {3, -1, -1}   // State 3: digit -> State 3, else invalid
     };
 
     // Correcting State 2 transition after a '.', it can only go to State 3 on digit
-    transitionTable[2][0] = 3; // digit after '.' goes to State 3
+    
 
     int state = 0; // Initial state
 
     for (char ch : str)
     {
+        // We define the column for the TT
         int col;
         if (isdigit(ch))
             col = 0; // Column for digits
@@ -262,7 +270,8 @@ bool isNumber(const std::string &str)
         else
             col = 2; // Column for anything else
         
-        state = transitionTable[state][col]; // Get the next state
+        state = transitionTable[state][col]; // Get the next state with the given col
+
 
         if (state == -1) // If state is -1, it's an invalid transition
             return false;
@@ -297,7 +306,7 @@ bool isIdentifier(const std::string &str)
     return state == 1;
 }
 
-// Function signature as required
+// Function signature 
 void lexer(const std::string &filepath)
 {
     Lexer lexer;
