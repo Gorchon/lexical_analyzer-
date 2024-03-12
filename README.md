@@ -43,16 +43,16 @@ To test the lexical analyzer with different expressions, you can modify the cont
 
 ### Enteros y Decimales
 
-![Alt text](/lexical_analyzer-/DFAs/DFA1.jpeg)
+![Alt text](/DFAs/DFA1.jpeg)
 
 ### Variables
 
-![Alt text](/lexical_analyzer-/DFAs/DFA2.jpeg)
+![Alt text](/DFAs/DFA2.jpeg)
 
 ### Operadores
 
-![Alt text](/lexical_analyzer-/DFAs/DFA3.jpeg)
+![Alt text](/DFAs/DFA3.jpeg)
 
 ### Parentesis
 
-![Alt text](/lexical_analyzer-/DFAs/DFA4.jpeg)
+![Alt text](/DFAs/DFA4.jpeg)
