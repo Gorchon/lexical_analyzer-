@@ -1,7 +1,7 @@
 CXX = g++            # C++ compiler
 CXXFLAGS = -std=c++17 # Compilation flags
-SRC =  LexicalAnalyzerTest.cpp        # Replace with your C++ source file
-OUTPUT = LexicalAnalyzerTest        # Replace with your desired executable name
+SRC =  LexicalAnalyzer.cpp        # Replace with your C++ source file
+OUTPUT = LexicalAnalyzer        # Replace with your desired executable name
 
 all: $(OUTPUT)
 
